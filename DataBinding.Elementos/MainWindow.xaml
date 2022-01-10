@@ -17,7 +17,8 @@
             <TextBlock  FontStyle="Italic"
                         HorizontalAlignment="Center"
                         Margin="8"
-                        x:Name="textoTextBlock"/>
+                        x:Name="textoTextBlock"
+                        Text="{Binding ElementName=textoTextBox, Path=Text}"/>
         </StackPanel>
     </StackPanel>
 </Window>
