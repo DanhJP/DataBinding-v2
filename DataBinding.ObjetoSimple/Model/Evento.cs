@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DataBinding.ObjetoSimple.Model
 {
-    public class Evento
+    public class Evento : INotifyPropertyChanged 
     {
         private string _Title;
         private DateTime _Date;
@@ -15,6 +16,7 @@ namespace DataBinding.ObjetoSimple.Model
                 if (value != _Title)
                 {
                     _Title = value;
+                    OnPropertyChanged("Title");
                 }
             }
         }
@@ -27,10 +29,19 @@ namespace DataBinding.ObjetoSimple.Model
                 if (value != _Date)
                 {
                     _Date = value;
+                    OnPropertyChanged("Date");
                 }
             }
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

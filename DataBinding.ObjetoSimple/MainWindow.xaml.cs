@@ -20,8 +20,10 @@ namespace DataBinding.ObjetoSimple
                 Title = "Reunión de trabajo",
                 Date = new DateTime(2021, 10, 12)
             };
-            UpdateUI();
-
+            //UpdateUI();
+            //nombreTextBox.Text = evento.Title;
+            //fechaDatePicker.SelectedDate = evento.Date;
+            DataContext = evento;
         }
 
         private void UpdateUI()
@@ -34,7 +36,7 @@ namespace DataBinding.ObjetoSimple
         {
             evento.Title = evento.Title.ToUpper();
             evento.Date = evento.Date.AddDays(1);
-            UpdateUI();
+            //UpdateUI();
         }
     }
 }

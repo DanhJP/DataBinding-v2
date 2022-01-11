@@ -30,10 +30,12 @@
                        HorizontalAlignment="Right"/>
                 <TextBox Grid.Row="0" Grid.Column="1"
                          Margin="2"
-                         x:Name="eventoTextBox"/>
+                         x:Name="eventoTextBox"
+                         Text="{Binding Path=Title}"/>
                 <DatePicker Grid.Row="1" Grid.Column="1"
                             Margin="2"
-                            x:Name="fechaDatePicker"/>
+                            x:Name="fechaDatePicker"
+                            SelectedDate="{Binding Path=Date}"/>
             </Grid>
         </GroupBox>
 
