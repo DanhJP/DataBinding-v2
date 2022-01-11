@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using DataBinding.Collections.Model;
+using System.Collections.ObjectModel;
 
 namespace DataBinding.Collections
 {
@@ -9,17 +10,19 @@ namespace DataBinding.Collections
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<User> users;
+        private ObservableCollection<User> users;
         public MainWindow()
         {
             InitializeComponent();
             LoadUsers();
-            usersListBox.ItemsSource = users;
+            //usersListBox.ItemsSource = users;
+            DataContext = users;
         }
 
 
         private void LoadUsers()
         {
+            users = new ObservableCollection<User>();
             users.Add(new User() { Name = "Peter Parker" });
             users.Add(new User() { Name = "Tony Stark" });
             users.Add(new User() { Name = "Natasha Romanoff" });
@@ -30,7 +33,7 @@ namespace DataBinding.Collections
         {
             if (!string.IsNullOrEmpty(userTextBox.Text))
             {
-                User user = new User() { Name = userTextBox.Text };
+                User user = new User() { Name = "Nuevo usuario" };
                 users.Add(user);
                 usersListBox.SelectedItem = user;
                 UpdateView();
@@ -54,10 +57,9 @@ namespace DataBinding.Collections
             if (usersListBox.SelectedItem != null)
             {
                 users.Remove(usersListBox.SelectedItem as User);
-                {
-                    userTextBox.Text = "";
-                    UpdateView();
-                }
+                //userTextBox.Text = string.Empty;
+                UpdateView();
+               
             }
         }
 
